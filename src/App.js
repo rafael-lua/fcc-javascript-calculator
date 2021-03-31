@@ -1,6 +1,7 @@
 import { Provider } from "react-redux";
 import store from "./store/config";
 
+import Display from "./components/Display";
 import ButtonNumber from "./components/ButtonNumber";
 import ButtonSign from "./components/ButtonSign";
 import ButtonSignEqual from "./components/ButtonSignEqual";
@@ -14,6 +15,7 @@ function App() {
       <div className="container">
         <h1>javascript-calculator</h1>
         <div className="calculator">
+          <Display />
           <ButtonSign sign="+" template="sign-add" />
           <ButtonSign sign="-" template="sign-sub" />
           <ButtonSign sign="*" template="sign-mult" />
@@ -28,7 +30,7 @@ function App() {
               <ButtonNumber num={index} key={index} />
             ))
           }
-          
+
         </div>
       </div>
     </Provider>
