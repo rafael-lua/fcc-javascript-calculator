@@ -1,23 +1,21 @@
 import { connect } from "react-redux"; // Component will be exported through the connect
 import { debugMsg } from '../store/actions';
 
-const ButtonNumber = (props) => {
+const ButtonSign = (props) => {
+
+  props.debugMsg("My operation is: " + props.sign);
 
   return (
-    <div className={"btn num-" + props.num}>
+    <div className={"btn " + props.template}>
       
     </div>
   )
 }
 
-// // Mapping the state to the component props
-// const mapStateToProps = (state) => {
-//   return state;
-// }
 
 // Mapping dispatchs actions to the component props (https://react-redux.js.org/using-react-redux/connect-mapdispatch#defining-mapdispatchtoprops-as-an-object)
 const mapDispatchToProps = {
   debugMsg
 }
 
-export default connect(null, mapDispatchToProps)(ButtonNumber);
+export default connect(null, mapDispatchToProps)(ButtonSign);
