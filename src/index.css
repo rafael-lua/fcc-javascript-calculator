@@ -45,3 +45,99 @@ img {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+.calculator {
+  width: 35%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 1em;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-areas:
+    "dis dis dis dis"
+		"cg ce o-div o-mult"
+		"num-7 num-8 num-9 o-sub"
+		"num-4 num-5 num-6 o-add"
+		"num-1 num-2 num-3 o-equal"
+		"num-0 num-0 o-dot o-equal";
+}
+
+.btn {
+  min-width: 3.5em;
+  min-height: 5em;
+  border: 2px solid black;
+  padding: 0.25em;
+}
+
+.sign-equal {
+  grid-area: o-equal;
+}
+
+.sign-dot {
+  grid-area: o-dot;
+}
+
+.sign-add {
+  grid-area: o-add;
+}
+
+.sign-sub {
+  grid-area: o-sub;
+}
+
+.sign-mult {
+  grid-area: o-mult;
+}
+
+.sign-div {
+  grid-area: o-div;
+}
+
+.clean-global {
+  grid-area: cg;
+}
+
+.clean-entry {
+  grid-area: ce;
+}
+
+.num-0 {
+  grid-area: num-0;
+}
+
+.num-1 {
+  grid-area: num-1;
+}
+
+.num-2 {
+  grid-area: num-2;
+}
+
+.num-3 {
+  grid-area: num-3;
+}
+
+.num-4 {
+  grid-area: num-4;
+}
+
+.num-5 {
+  grid-area: num-5;
+}
+
+.num-6 {
+  grid-area: num-6;
+}
+
+.num-7 {
+  grid-area: num-7;
+}
+
+.num-8 {
+  grid-area: num-8;
+}
+
+.num-9 {
+  grid-area: num-9;
+}

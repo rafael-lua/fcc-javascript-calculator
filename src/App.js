@@ -1,13 +1,39 @@
 import { Provider } from "react-redux";
 import store from "./store/config";
 
-store.dispatch({type: "DEBUG", msg: "Working!"});
+import ButtonNumber from "./components/ButtonNumber";
+import ButtonSignAdd from "./components/ButtonSignAdd";
+import ButtonSignSub from "./components/ButtonSignSub";
+import ButtonSignMult from "./components/ButtonSignMult";
+import ButtonSignDiv from "./components/ButtonSignDiv";
+import ButtonSignEqual from "./components/ButtonSignEqual";
+import ButtonSignDot from "./components/ButtonSignDot";
+
+// store.dispatch({type: "DEBUG", msg: "Working!"});
 
 function App() {
   return (
     <Provider store={store}>
       <div className="container">
         <h1>javascript-calculator</h1>
+        <div className="calculator">
+          <ButtonSignAdd />
+          <ButtonSignSub />
+          <ButtonSignMult />
+          <ButtonSignDiv />
+          <ButtonSignEqual />
+          <ButtonSignDot />
+          <ButtonNumber num="0" />
+          <ButtonNumber num="1" />
+          <ButtonNumber num="2" />
+          <ButtonNumber num="3" />
+          <ButtonNumber num="4" />
+          <ButtonNumber num="5" />
+          <ButtonNumber num="6" />
+          <ButtonNumber num="7" />
+          <ButtonNumber num="8" />
+          <ButtonNumber num="9" />
+        </div>
       </div>
     </Provider>
   );
