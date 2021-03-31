@@ -20,16 +20,15 @@ function App() {
           <ButtonSign sign="/" template="sign-div" />
           <ButtonSignEqual />
           <ButtonSignDot />
-          <ButtonNumber num="0" />
-          <ButtonNumber num="1" />
-          <ButtonNumber num="2" />
-          <ButtonNumber num="3" />
-          <ButtonNumber num="4" />
-          <ButtonNumber num="5" />
-          <ButtonNumber num="6" />
-          <ButtonNumber num="7" />
-          <ButtonNumber num="8" />
-          <ButtonNumber num="9" />
+          
+          { // Loop to create 10 button elements using a dummy empty array to map over
+            [
+              ...Array(10),
+            ].map((value, index) => (
+              <ButtonNumber num={index} key={index} />
+            ))
+          }
+          
         </div>
       </div>
     </Provider>

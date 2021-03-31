@@ -20,6 +20,14 @@ const reducer = (state = appState, action) => {
       console.log("ACTION SENT. MESSAGE: " + action.msg);
       return state;
 
+    case actions.REGISTER_OPERATION:
+      console.log("SIGN SENT, IT IS: " + action.sign);
+      return state;
+
+    case actions.REGISTER_VALUE:
+      console.log("VALUE SENT, IT IS: " + action.value);
+      return state;
+
     default:
       return state;
   }

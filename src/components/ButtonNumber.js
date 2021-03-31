@@ -1,10 +1,9 @@
 import { connect } from "react-redux"; // Component will be exported through the connect
-import { debugMsg } from '../store/actions';
+import { registerValue } from '../store/actions';
 
 const ButtonNumber = (props) => {
-
   return (
-    <div className={"btn num-" + props.num}>
+    <div className={"btn num-" + props.num} onClick={() => props.registerValue(props.num)}>
       
     </div>
   )
@@ -16,8 +15,8 @@ const ButtonNumber = (props) => {
 // }
 
 // Mapping dispatchs actions to the component props (https://react-redux.js.org/using-react-redux/connect-mapdispatch#defining-mapdispatchtoprops-as-an-object)
-const mapDispatchToProps = {
-  debugMsg
+const mapDispatchToProps = { 
+  registerValue
 }
 
 export default connect(null, mapDispatchToProps)(ButtonNumber);

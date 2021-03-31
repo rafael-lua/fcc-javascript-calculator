@@ -21,7 +21,7 @@ export const registerValue = (value) => {
   }
 };
 
-// Register an operation
+// Register an operation by binding the sign into the entry value
 export const registerOperation = (sign) => {
   return {
     type: actions.REGISTER_OPERATION,
