@@ -2,10 +2,11 @@ import actions from "./actions"
 
 // State initial values
 const appState = {
-  currentValue: "", // Value being inserted
   isFloat: false, // Current value received a dot sign already?
-  entries: [], // Array with objects like: { value: "", sign: null};  Null is the last value, ending the calculation
-  result: ""
+  entries: [
+    { value: "", sign: null }, // Initial value
+  ],
+  result: null
 };
 
 const reducer = (state = appState, action) => {
@@ -15,23 +16,59 @@ const reducer = (state = appState, action) => {
       console.log("ACTION SENT. MESSAGE: " + action.msg);
       return state;
 
-    case actions.REGISTER_OPERATION:
-      if(state.currentValue !== "") {
+    case actions.REGISTER_OPERATION: {
+      if(state.entries[state.entries.length - 1].value !== "") {
         let newState = JSON.parse(JSON.stringify(state));
-        newState.entries.push({value: state.currentValue, sign: action.sign});
-        newState.currentValue = "";
+        newState.entries.push({value: "", sign: action.sign});
         newState.isFloat = false;
-        console.log(state, newState);
+        return newState;
+      } else if(state.result !== null) {
+        let newState = JSON.parse(JSON.stringify(state));
+        newState.entries[0].value = state.result.toString();
+        newState.entries.push({value: "", sign: action.sign});
         return newState;
       } else {
-        console.log("Nothing changed!");
         return state;
       }
+    }
 
-    case actions.REGISTER_VALUE:
+    case actions.REGISTER_VALUE: {
       let newState = JSON.parse(JSON.stringify(state));
-      newState.currentValue = newState.currentValue + action.value;
+      let currentEntry = newState.entries.length - 1;
+      if(newState.entries[currentEntry].value === "" || (newState.entries[currentEntry].value[0] === "0" && newState.entries[currentEntry].value.length === 1)) { 
+        newState.entries[currentEntry].value = action.value.toString(); 
+      } else { 
+        newState.entries[currentEntry].value = newState.entries[currentEntry].value + action.value.toString(); 
+      }
+      newState.result = null;
       return newState;
+    }
+
+    case actions.CALCULATE: {
+      if(state.entries.length > 1) {
+        let newState = JSON.parse(JSON.stringify(state));
+        let finalValue = parseFloat(newState.entries[0].value);
+        for(let i = 0; i < newState.entries.length; i++) {
+          if(newState.entries[i].value !== "") {
+            switch(newState.entries[i].sign) { 
+              case "+": {
+                finalValue += parseFloat(newState.entries[i].value);
+                break; 
+              }
+              case null:
+              default: continue;
+            }
+          } else { break; }
+        }
+        newState.entries = [{ value: "", sign: null }];
+        newState.isFloat = false;
+        newState.result = finalValue;
+        return newState;
+      }
+      else {
+        return state;
+      }
+    }
 
     default:
       return state;
