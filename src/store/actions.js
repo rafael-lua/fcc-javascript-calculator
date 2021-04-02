@@ -3,6 +3,7 @@ const actions = {
   DEBUG: "DEBUG", // For tests
   REGISTER_VALUE: "REGISTER_VALUE",
   REGISTER_OPERATION: "REGISTER_OPERATION",
+  REGISTER_DECIMAL: "REGISTER_DECIMAL",
   CALCULATE: "CALCULATE",
 };
 
@@ -27,6 +28,13 @@ export const registerOperation = (sign) => {
   return {
     type: actions.REGISTER_OPERATION,
     sign
+  }
+};
+
+// Register decimal point
+export const registerDecimal = () => {
+  return {
+    type: actions.REGISTER_DECIMAL,
   }
 };
 
