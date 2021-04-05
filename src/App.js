@@ -6,6 +6,7 @@ import ButtonNumber from "./components/ButtonNumber";
 import ButtonSign from "./components/ButtonSign";
 import ButtonSignEqual from "./components/ButtonSignEqual";
 import ButtonSignDot from "./components/ButtonSignDot";
+import ButtonClear from "./components/ButtonClear";
 
 // store.dispatch({type: "DEBUG", msg: "Working!"});
 
@@ -16,18 +17,28 @@ function App() {
         <h1>javascript-calculator</h1>
         <div className="calculator">
           <Display />
-          <ButtonSign sign="+" template="sign-add" />
-          <ButtonSign sign="-" template="sign-sub" />
-          <ButtonSign sign="*" template="sign-mult" />
-          <ButtonSign sign="/" template="sign-div" />
+          <ButtonSign sign="+" template="sign-add" signId="add" />
+          <ButtonSign sign="-" template="sign-sub" signId="subtract" />
+          <ButtonSign sign="*" template="sign-mult" signId="multiply" />
+          <ButtonSign sign="/" template="sign-div" signId="divide" />
           <ButtonSignEqual />
           <ButtonSignDot />
-          
-          { // Loop to create 10 button elements using a dummy empty array to map over
+          <ButtonClear clearType="cg" />
+          <ButtonClear clearType="ce" />
+
+          {/* { // Loop to create 10 button elements using a dummy empty array to map over
             [
               ...Array(10),
             ].map((value, index) => (
               <ButtonNumber num={index} key={index} />
+            ))
+          } */}
+
+          {
+            [
+              "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"
+            ].map((value, index) => (
+              <ButtonNumber numId={value} num={index} key={index} />
             ))
           }
 

@@ -4,7 +4,7 @@ import { registerOperation } from '../store/actions';
 const ButtonSign = (props) => {
 
   return (
-    <div className={"btn " + props.template} onClick={() => props.registerOperation(props.sign)}>
+    <div className={"btn " + props.template} onClick={() => props.registerOperation(props.sign)} id={props.signId}>
       {props.sign}
     </div>
   )

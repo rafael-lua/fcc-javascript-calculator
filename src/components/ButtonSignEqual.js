@@ -3,7 +3,7 @@ import { calculate } from '../store/actions';
 
 const ButtonSignEqual = (props) => {
   return (
-    <div className="btn sign-equal" onClick={() => props.calculate()}>
+    <div className="btn sign-equal" onClick={() => props.calculate()} id="equals">
       =
     </div>
   )

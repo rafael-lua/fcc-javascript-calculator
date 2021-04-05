@@ -5,6 +5,8 @@ const actions = {
   REGISTER_OPERATION: "REGISTER_OPERATION",
   REGISTER_DECIMAL: "REGISTER_DECIMAL",
   CALCULATE: "CALCULATE",
+  CLEAN_GLOBAL: "CLEAN_GLOBAL",
+  CLEAN_ENTRY: "CLEAN_ENTRY",
 };
 
 // Debug testing function to log something to the console
@@ -42,6 +44,13 @@ export const registerDecimal = () => {
 export const calculate = () => {
   return {
     type: actions.CALCULATE,
+  }
+};
+
+// Clear the calculator. cg = Clear Global. ce = Clear Entry.
+export const clear = (t) => {
+  return {
+    type: t === "cg" ? actions.CLEAN_GLOBAL : actions.CLEAN_ENTRY,
   }
 };
 

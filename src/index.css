@@ -30,10 +30,6 @@ h1, h2 {
   margin: 10px 0; /* Top and bottom margin */
 }
 
-p {
-  margin: 10px 0;
-}
-
 img {
   width: 100%;
 }
@@ -66,12 +62,24 @@ img {
   min-width: 3.5em;
   min-height: 5em;
   border: 2px solid black;
+  margin: 0.1em;
   padding: 0.25em;
 }
 
 .display {
   border: 3px solid #333;
   grid-area: dis;
+  text-align: right;
+  padding: 0 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1.25em;
+}
+
+.display p {
+  line-height: 1.3;
+  height: 100%;
 }
 
 .sign-equal {

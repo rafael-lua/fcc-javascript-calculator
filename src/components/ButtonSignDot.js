@@ -3,7 +3,7 @@ import { registerDecimal } from '../store/actions';
 
 const ButtonSignDot = (props) => {
   return (
-    <div className="btn sign-dot" onClick={() => props.registerDecimal()}>
+    <div className="btn sign-dot" onClick={() => props.registerDecimal()} id="decimal">
       .
     </div>
   )

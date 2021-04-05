@@ -4,7 +4,7 @@ import actions from "./actions"
 const appState = {
   isFloat: false, // Current value received a dot sign already?
   entries: [
-    { value: "", sign: null }, // Initial value
+    { value: "0", sign: null }, // Initial value
   ],
   result: null
 };
@@ -17,12 +17,12 @@ const reducer = (state = appState, action) => {
       return state;
 
     case actions.REGISTER_OPERATION: { 
-      if(state.entries[state.entries.length - 1].value !== "" && state.entries[state.entries.length - 1].value !== "0") {
+      if(state.entries[state.entries.length - 1].value !== "0" && state.entries[state.entries.length - 1].value !== "-") {
         let newState = JSON.parse(JSON.stringify(state));
-        newState.entries.push({value: "", sign: action.sign});
+        newState.entries.push({value: "0", sign: action.sign});
         newState.isFloat = false;
         return newState;
-      } else if(state.result === null) {
+      } else if(state.result === null && action.sign === "-") {
         let newState = JSON.parse(JSON.stringify(state));
         let currentEntry = newState.entries.length - 1;
         newState.entries[currentEntry].value = "-";
@@ -30,8 +30,16 @@ const reducer = (state = appState, action) => {
       } else if(state.result !== null) {
         let newState = JSON.parse(JSON.stringify(state));
         newState.entries[0].value = state.result.toString();
-        newState.entries.push({value: "", sign: action.sign});
+        newState.entries.push({value: "0", sign: action.sign});
         newState.result = null;
+        return newState;
+      } else if(state.entries.length > 1) {
+        let newState = JSON.parse(JSON.stringify(state));
+        let currentEntry = newState.entries.length - 1;
+        newState.entries[currentEntry].sign = action.sign;
+        if(newState.entries[currentEntry].value[0] === "-") {
+          newState.entries[currentEntry].value = newState.entries[currentEntry].value.slice(1);
+        }
         return newState;
       } else {
         return state;
@@ -62,7 +70,7 @@ const reducer = (state = appState, action) => {
         let newState = JSON.parse(JSON.stringify(state));
         let finalValue = parseFloat(newState.entries[0].value);
         for(let i = 0; i < newState.entries.length; i++) {
-          if(newState.entries[i].value !== "") {
+          if(newState.entries[i].value !== "0") {
             switch(newState.entries[i].sign) { 
               case "+": {
                 finalValue += parseFloat(newState.entries[i].value);
@@ -88,7 +96,7 @@ const reducer = (state = appState, action) => {
             }
           } else { break; }
         }
-        newState.entries = [{ value: "", sign: null }];
+        newState.entries = [{ value: "0", sign: null }];
         newState.isFloat = false;
         newState.result = finalValue;
         return newState;
@@ -110,6 +118,22 @@ const reducer = (state = appState, action) => {
       else {
         return state;
       }
+    }
+
+    case actions.CLEAN_GLOBAL: {
+      let newState = JSON.parse(JSON.stringify(state));
+      newState.entries = [{ value: "0", sign: null }];
+      newState.isFloat = false;
+      newState.result = null;
+      return newState;
+    }
+
+    case actions.CLEAN_ENTRY: {
+      let newState = JSON.parse(JSON.stringify(state));
+      let currentEntry = newState.entries.length - 1;
+      newState.entries[currentEntry].value = "0";
+      newState.isFloat = false;
+      return newState;
     }
 
     default:
