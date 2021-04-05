@@ -12,6 +12,7 @@
 body {
   font-family: 'Lato', sans-serif;
   color: #333;
+  background-color: white;
   line-height: 1.6;
 }
 
@@ -21,7 +22,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: #333;
+  color: rgb(38, 158, 158);
 }
 
 h1, h2 {
@@ -36,6 +37,17 @@ img {
 
 /* App utilities */
 
+.app-title {
+  text-align: center;
+  font-weight: 700;
+}
+
+.app-copy {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.9em;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -43,7 +55,6 @@ img {
 
 .calculator {
   width: 35%;
-  height: 100%;
   margin: 0 auto;
   padding: 1em;
   display: grid;
@@ -59,27 +70,45 @@ img {
 }
 
 .btn {
+  color: white;
   min-width: 3.5em;
   min-height: 5em;
   border: 2px solid black;
+  background-color: #333;
   margin: 0.1em;
-  padding: 0.25em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn p {
+  font-size: 1.5em;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+}
+
+.btn:hover {
+  background-color: chocolate;
+  cursor: pointer;
 }
 
 .display {
-  border: 3px solid #333;
+  color: white;
+  border: 3px solid black;
+  background-color: #333;
   grid-area: dis;
   text-align: right;
   padding: 0 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-size: 1.25em;
 }
 
 .display p {
   line-height: 1.3;
   height: 100%;
+  font-size: 1.25em;
 }
 
 .sign-equal {

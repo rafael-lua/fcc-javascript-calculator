@@ -14,7 +14,7 @@ function App() {
   return (
     <Provider store={store}>
       <div className="container">
-        <h1>javascript-calculator</h1>
+        <h1 className="app-title">JavaScript Calculator</h1>
         <div className="calculator">
           <Display />
           <ButtonSign sign="+" template="sign-add" signId="add" />
@@ -43,6 +43,7 @@ function App() {
           }
 
         </div>
+        <h3 className="app-copy">By <a href="https://github.com/rafael-lua">rafael-lua</a></h3>
       </div>
     </Provider>
   );

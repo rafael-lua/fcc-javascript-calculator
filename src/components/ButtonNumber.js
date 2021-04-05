@@ -4,7 +4,7 @@ import { registerValue } from '../store/actions';
 const ButtonNumber = (props) => {
   return (
     <div className={"btn num-" + props.num} onClick={() => props.registerValue(props.num)} id={props.numId}>
-      {props.num}
+      <p>{props.num}</p>
     </div>
   )
 }

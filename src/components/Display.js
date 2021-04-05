@@ -11,7 +11,7 @@ const Display = (props) => {
 
       for(let i = 0; i < props.entries.length; i++) {
         if(props.entries[i].sign !== null) { history += props.entries[i].sign; }
-        history += props.entries[i].value;
+        if(props.entries[i].value !== "0") { history += props.entries[i].value; }
       }
       
       setEntriesHistory(history);

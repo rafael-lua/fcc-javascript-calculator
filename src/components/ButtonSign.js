@@ -5,7 +5,7 @@ const ButtonSign = (props) => {
 
   return (
     <div className={"btn " + props.template} onClick={() => props.registerOperation(props.sign)} id={props.signId}>
-      {props.sign}
+      <p>{props.sign}</p>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import { clear } from '../store/actions';
 const ButtonClear = (props) => {
   return (
     <div className={"btn sign-" + props.clearType} onClick={() => props.clear(props.clearType)} id={props.clearType === "cg" ? "clear" : "clear-entry"}>
-      {props.clearType}
+      <p>{props.clearType}</p>
     </div>
   )
 }
